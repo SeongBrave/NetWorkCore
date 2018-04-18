@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NetWorkCore_Example' do
+  pod 'NetWorkCore', :path => '../'
+
+  target 'NetWorkCore_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

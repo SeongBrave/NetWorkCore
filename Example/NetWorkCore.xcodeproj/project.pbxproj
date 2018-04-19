@@ -14,6 +14,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		951D53DA20882E6D0033D923 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951D53D920882E6D0033D923 /* Api.swift */; };
+		951D54332088910D0033D923 /* TopicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951D54312088910D0033D923 /* TopicsModel.swift */; };
+		951D54342088910D0033D923 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951D54322088910D0033D923 /* AuthorModel.swift */; };
 		96BA1B0A2B89E5CE2C1175D4 /* Pods_NetWorkCore_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E543C85ECE1482B5A691E0 /* Pods_NetWorkCore_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6E43CE9A0940EAE3117CBC63 /* Pods_NetWorkCore_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetWorkCore_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8614F07D51C3167C55008F3C /* NetWorkCore.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NetWorkCore.podspec; path = ../NetWorkCore.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		951D53D920882E6D0033D923 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		951D54312088910D0033D923 /* TopicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsModel.swift; sourceTree = "<group>"; };
+		951D54322088910D0033D923 /* AuthorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		BBD7EE585DBDA526438FD611 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,12 +110,14 @@
 		607FACD21AFB9204008FA782 /* Example for NetWorkCore */ = {
 			isa = PBXGroup;
 			children = (
+				951D54302088910D0033D923 /* TopicsModel */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* Test_Vc.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				951D53D920882E6D0033D923 /* Api.swift */,
 			);
 			name = "Example for NetWorkCore";
 			path = NetWorkCore;
@@ -157,6 +165,15 @@
 				6E43CE9A0940EAE3117CBC63 /* Pods_NetWorkCore_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		951D54302088910D0033D923 /* TopicsModel */ = {
+			isa = PBXGroup;
+			children = (
+				951D54312088910D0033D923 /* TopicsModel.swift */,
+				951D54322088910D0033D923 /* AuthorModel.swift */,
+			);
+			path = TopicsModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,8 +423,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951D53DA20882E6D0033D923 /* Api.swift in Sources */,
+				951D54342088910D0033D923 /* AuthorModel.swift in Sources */,
 				607FACD81AFB9204008FA782 /* Test_Vc.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				951D54332088910D0033D923 /* TopicsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

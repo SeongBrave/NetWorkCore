@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetWorkCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        NetWorkCore.successCode = 1
+        NetWorkCore.statusKey = "success"
+        NetWorkCore.dataKey = "data"
+        
         // Override point for customization after application launch.
         return true
     }

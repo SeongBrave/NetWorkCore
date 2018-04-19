@@ -74,3 +74,22 @@ NetWorkCore.dataKey = "data"
             })
             .disposed(by: disposeBag)
 ```
+
+### 4. 发起请求然后界面直接得到的是 model
+
+```swift
+   func request3()  {
+        Observable.just("")
+            .map { _ in Api.topics}
+            .emeRequestApiForArray(TopicsModel.self)
+            .subscribe(onNext: {(result) in
+                switch result {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+```

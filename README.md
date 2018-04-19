@@ -11,7 +11,7 @@
 ### CocoaPods
 
 ```ruby
-pod 'UtilCore', '~> 0.0.1'
+pod 'NetWorkCore', '~> 0.0.1'
 ```
 
 ## 具体使用

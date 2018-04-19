@@ -1,29 +1,76 @@
 # NetWorkCore
 
-[![CI Status](http://img.shields.io/travis/seongbrave/NetWorkCore.svg?style=flat)](https://travis-ci.org/seongbrave/NetWorkCore)
-[![Version](https://img.shields.io/cocoapods/v/NetWorkCore.svg?style=flat)](http://cocoapods.org/pods/NetWorkCore)
-[![License](https://img.shields.io/cocoapods/l/NetWorkCore.svg?style=flat)](http://cocoapods.org/pods/NetWorkCore)
-[![Platform](https://img.shields.io/cocoapods/p/NetWorkCore.svg?style=flat)](http://cocoapods.org/pods/NetWorkCore)
+再[Alamofire](https://github.com/Alamofire/Alamofire)的基础上封装了一套网络请求，并且实现数据解析的工具库,配合[RxSwift](https://github.com/ReactiveX/RxSwift)使用起来非常方便
 
-## Example
+## 使用要求
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+* Xcode 9.0+
 
-## Requirements
+## 安装
 
-## Installation
-
-NetWorkCore is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### CocoaPods
 
 ```ruby
-pod 'NetWorkCore'
+pod 'UtilCore', '~> 0.0.1'
 ```
 
-## Author
+## 具体使用
 
-seongbrave, seongbrave@sina.com
+### 1. 发起普通的网络请求
 
-## License
+```swift
+  NetWorkAPI.sharedInstance.requestSwiftyJSONReg(Api.topics) { (result) in
+            switch result {
+            case .success(let repos):
+                print(repos)
+            case .failure(let error):
+                print(error)
+            }
+        }
+```
 
-NetWorkCore is available under the MIT license. See the LICENSE file for more info.
+### 2. 流式网络请求
+
+```swift
+ Observable.just("")
+            .map { _ in Api.topics}
+            .emeRequestApiForJson().subscribe(onNext: {(result) in
+                switch result {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            .disposed(by: disposeBag)
+```
+
+### 3. 约定好返回数据状态
+
+_在发起网络请求之前需要配置下_
+
+```swift
+//正确码 即:successCode 为1 的时候才会解析dataKey字段的值得
+NetWorkCore.successCode = 1
+// 获取successCode的建是对应的success
+NetWorkCore.statusKey = "success"
+// 获取data中的数据
+NetWorkCore.dataKey = "data"
+```
+
+发起网络请求
+
+```swift
+ Observable.just("")
+            .map { _ in Api.topics}
+            .emeRequestApiForArray(TopicsModel.self)
+            .subscribe(onNext: {(result) in
+                switch result {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            .disposed(by: disposeBag)
+```

@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //正确码 即:successCode 为1 的时候才会解析dataKey字段的值得
         NetWorkCore.successCode = 1
+        // 获取successCode的建是对应的success
         NetWorkCore.statusKey = "success"
+        // 获取data中的数据
         NetWorkCore.dataKey = "data"
         
         // Override point for customization after application launch.

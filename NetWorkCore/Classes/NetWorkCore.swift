@@ -10,7 +10,7 @@ import Foundation
 
 public  class NetWorkCore {
     /// 网络访问基础库
-    public static var baseUrl:[String] = ["http://www.baokan.name/e/api"]
+    public static var baseUrl:[String] = ["https://cnodejs.org/api/v1"]
     /// 表示是否是debug模式，debug 打印返回数据
     public static var isDebug:Bool = true
     /// 返回数据 状态解析key

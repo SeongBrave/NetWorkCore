@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NetWorkCore'
-  s.version          = '0.0.1'
+  s.version          = '0.1.0'
   s.summary          = 'RxSwift封装网络请求'
 
 
@@ -27,11 +27,11 @@ TODO: RxSwift封装络请求封， 包含了网络请求，数据解析等...
   s.source_files  = 'NetWorkCore/Classes/**/*.{swift}'
 
   s.frameworks = 'UIKit'
-  s.dependency 'ModelProtocol', '~> 0.0.1'
-  s.dependency 'RxSwift', '~> 4.1.2'  #依赖关系，该项目所依赖的其他库，如果有多个需要填写多个s.dependency
-  s.dependency 'RxCocoa', '~> 4.1.2'
-  s.dependency 'Alamofire', '~> 4.7.0'
-  s.dependency 'Result', '~> 3.2.4'
+  s.dependency 'ModelProtocol', '~> 0.1.0'
+  s.dependency 'RxSwift', '~> 4.4.0'  #依赖关系，该项目所依赖的其他库，如果有多个需要填写多个s.dependency
+  s.dependency 'RxCocoa', '~> 4.4.0'
+  s.dependency 'Alamofire', '~> 4.7.3'
+  s.dependency 'Result', '~> 4.0.0'
   
   # s.resource_bundles = {
   #   'NetWorkCore' => ['NetWorkCore/Assets/*.png']

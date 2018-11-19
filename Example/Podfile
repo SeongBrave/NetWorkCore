@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'NetWorkCore_Example' do
   pod 'NetWorkCore', :path => '../'
-  pod 'UtilCore', '~> 0.0.1'
+  pod 'UtilCore', '~> 0.1.0'
 
   target 'NetWorkCore_Tests' do
     inherit! :search_paths

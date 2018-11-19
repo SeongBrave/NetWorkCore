@@ -229,7 +229,7 @@ extension ObservableType where E == Result<JSON,MikerError> {
                 ///需要外部专门解析然后将剩余的json实例化为model
                 let regObj = reg_block(result)
                 if let regList = regObj as? JSON{
-                    let mappedObjectsArray = regList.arrayValue.flatMap { T(json: $0) }
+                    let mappedObjectsArray = regList.arrayValue.compactMap { T(json: $0) }
                     return Observable.just(Result.success(mappedObjectsArray))
                 }else if let error = regObj as? MikerError{
                     return Observable.just(Result.failure(error))

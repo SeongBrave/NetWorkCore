@@ -17,6 +17,6 @@ public class Reg: ModelProtocol {
     required public init?(json:JSON){
         self.status = json[NetWorkCore.statusKey].intValue
         self.data = json[NetWorkCore.dataKey]
-        self.message = json["message"].stringValue
+        self.message = json[NetWorkCore.messageKey].stringValue
     }
 }

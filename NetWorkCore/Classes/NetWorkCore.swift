@@ -10,13 +10,15 @@ import Foundation
 
 public  class NetWorkCore {
     /// 网络访问基础库
-    public static var baseUrl:[String] = ["https://cnodejs.org/api/v1"]
+    public static var baseUrl:[String] = ["http://seongbrave.cn"]
     /// 表示是否是debug模式，debug 打印返回数据
     public static var isDebug:Bool = true
     /// 返回数据 状态解析key
     public static var statusKey:String = "status"
     /// 用于返回数据解析的key
     public static var dataKey:String = "data"
+    /// 用于返回数据解析的key
+    public static var messageKey:String = "msg"
     /// 表示返回成功的状态码
     public static var successCode:Int = 0
 }

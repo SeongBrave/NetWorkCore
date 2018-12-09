@@ -43,18 +43,14 @@ public extension ObservableType where E == String {
     public func mapSwiftyJSONReg() -> Observable<JSON> {
         return flatMap { response -> Observable<JSON> in
             if let dataFromString = response.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                do {
-                    let json = try JSON(data: dataFromString)
-                    guard let regObj = Reg(json: json) else {
-                        throw MikerError("clienterrorcode",code:101,message:"对象转换错误")
-                    }
-                    if regObj.status == NetWorkCore.successCode{
-                        return Observable.just(regObj.data)
-                    }else{
-                        throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
-                    }
-                } catch _ {
-                    throw MikerError("clienterrorcode",code:100,message:"JSON转换错误")
+                let json = try JSON(data: dataFromString)
+                guard let regObj = Reg(json: json) else {
+                    throw MikerError("clienterrorcode",code:101,message:"对象转换错误")
+                }
+                if regObj.status == NetWorkCore.successCode{
+                    return Observable.just(regObj.data)
+                }else{
+                    throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
                 }
             } else {
                 throw MikerError("clienterrorcode",code:100,message:"JSON转换错误")
@@ -72,21 +68,17 @@ public extension ObservableType where E == String {
     public func mapSwiftyObject<T: ModelProtocol>(_ type: T.Type) -> Observable<T> {
         return flatMap { response -> Observable<T> in
             if let dataFromString = response.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                do {
-                    let json = try JSON(data: dataFromString)
-                    guard let regObj = Reg(json: json) else {
+                let json = try JSON(data: dataFromString)
+                guard let regObj = Reg(json: json) else {
+                    throw MikerError("clienterrorcode",code:101,message:"对象转换错误")
+                }
+                if regObj.status == NetWorkCore.successCode{
+                    guard let mappedObject = T(json: regObj.data) else {
                         throw MikerError("clienterrorcode",code:101,message:"对象转换错误")
                     }
-                    if regObj.status == NetWorkCore.successCode{
-                        guard let mappedObject = T(json: regObj.data) else {
-                            throw MikerError("clienterrorcode",code:101,message:"对象转换错误")
-                        }
-                        return Observable.just(mappedObject);
-                    }else{
-                        throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
-                    }
-                } catch _ {
-                    throw MikerError("clienterrorcode",code:100,message:"JSON转换错误")
+                    return Observable.just(mappedObject);
+                }else{
+                    throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
                 }
             } else {
                 throw MikerError("clienterrorcode",code:100,message:"JSON转换错误")
@@ -104,19 +96,15 @@ public extension ObservableType where E == String {
     public func mapSwiftyArray<T: ModelProtocol>(_ type: T.Type) -> Observable<[T]> {
         return flatMap { response -> Observable<[T]> in
             if let dataFromString = response.data(using: String.Encoding.utf8, allowLossyConversion: false) {
-                do {
-                    let json = try JSON(data: dataFromString)
-                    guard let regObj = Reg(json: json) else {
-                        throw MikerError("clienterrorcode",code:101,message:"对象转换错误");
-                    }
-                    if regObj.status == NetWorkCore.successCode{
-                        let mappedObjectsArray = regObj.data.arrayValue.compactMap { T(json: $0) }
-                        return Observable.just(mappedObjectsArray);
-                    }else{
-                        throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
-                    }
-                } catch _ {
-                    throw MikerError("clienterrorcode",code:100,message:"JSON转换错误")
+                let json = try JSON(data: dataFromString)
+                guard let regObj = Reg(json: json) else {
+                    throw MikerError("clienterrorcode",code:101,message:"对象转换错误");
+                }
+                if regObj.status == NetWorkCore.successCode{
+                    let mappedObjectsArray = regObj.data.arrayValue.compactMap { T(json: $0) }
+                    return Observable.just(mappedObjectsArray);
+                }else{
+                    throw MikerError("serverrrorcode",code:regObj.status,message:regObj.message)
                 }
             } else {
                 throw MikerError("clienterrorcode",code:100,message:"JSON转换错误");
